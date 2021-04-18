@@ -1,10 +1,12 @@
 import './App.css';
-import ActorGallery from './Pages/ActorGallery/ActorGallery';
+import React from 'react';
+import ActorsPage from './Pages/ActorsPage/ActorsPage';
 
-function App() {
+function App() {  
+
   return (
-    <div className="App">
-     <ActorGallery/>
+    <div className="app">
+      <ActorsPage/>
     </div>
   );
 }
