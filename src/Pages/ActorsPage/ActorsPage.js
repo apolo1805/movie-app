@@ -6,6 +6,7 @@ import ActorGallery from '../../Components/ActorGallery/ActorGallery';
 function ActorsPage(props) {
 
     const [filterInput, changeFilter] = React.useState("");
+    const [sortBy, changeSort] = React.useState("fname");
 
     const actorArray = [
         new ActorModel("Brad", "Pitt", "1963-12-18", "M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg", "nm0000093/?ref_=fn_al_nm_1"),
@@ -22,6 +23,16 @@ function ActorsPage(props) {
         new ActorModel("Matt", "LeBlanc", "1967-07-25", "M/MV5BODQ0NTI0OTk0M15BMl5BanBnXkFtZTcwMDk2MDg5Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg", "nm0001455/?ref_=fn_al_nm_1")
     ];
 
+    actorArray.sort((actor1, actor2) => {
+        if (actor1[sortBy] > actor2[sortBy]) {
+          return 1;
+        } else if (actor1[sortBy] < actor2[sortBy]) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+
     function filterActors(e) {
         changeFilter(e.target.value);
       }
@@ -30,6 +41,11 @@ function ActorsPage(props) {
         <div className="p-actors">
             <h1>Actor Gallery</h1>
             <input type="text" value={filterInput} placeholder="Filter by first name or last name" onChange={(e) => filterActors(e)}/>
+            Sort By:
+            <select id="sortBy" value={sortBy} onChange={(e) => changeSort(e.target.value)}>
+                <option value="fname">First Name</option>
+                <option value="lname">Last Name</option>
+            </select>
             <ActorGallery actors={filterInput !== "" ? actorArray.filter(actor => (actor.getFullName().toLowerCase().includes(filterInput.toLowerCase()))) : actorArray}/>
         </div>
     );
