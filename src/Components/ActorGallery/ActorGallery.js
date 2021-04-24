@@ -4,7 +4,7 @@ import ActorCard from '../ActorCard/ActorCard';
 
 function ActorGallery(props) {
 
-    var actorCards = props.actors.map((actor, index) => <ActorCard key={index} name={actor.getFullName()} age={actor.getAge()} image={actor.actorImage} link={actor.imdbLink}/>);
+    var actorCards = props.actorsArray.map((actor, index) => <ActorCard key={index} name={actor.getFullName()} age={actor.getAge()} image={actor.actorImage} link={actor.imdbLink}/>);
 
 
     return (
