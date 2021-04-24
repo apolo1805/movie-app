@@ -14,7 +14,7 @@ function ActorsPage() {
     
 
     React.useState(() => {
-      axios.get("/Actors.json").then(response => {
+      axios.get(process.env.PUBLIC_URL + "/Actors.json").then(response => {
         setActors(response.data.map(plainActor => new ActorModel(plainActor.fname, plainActor.lname, plainActor.birthday, plainActor.actorImage, plainActor.imdbLink)));
       });
     }, []);
