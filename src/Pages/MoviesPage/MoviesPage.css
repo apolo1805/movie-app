@@ -1,4 +1,9 @@
 
 .p-movies {
     background-color: blue;
+    padding: 0 30px;
+}
+
+.p-movies > h1 {
+    text-align: center;
 }

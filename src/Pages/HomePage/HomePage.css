@@ -1,8 +1,12 @@
 
 .p-home {
-    background-color: brown;
+    background-color: pink;
 }
 
 .p-home > h1 {
     color:cornflowerblue;
+}
+
+.p-home > p {
+    font-size: 18px;
 }
