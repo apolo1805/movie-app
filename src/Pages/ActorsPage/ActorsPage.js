@@ -3,6 +3,8 @@ import './ActorsPage.css';
 import ActorModel from '../../Models/Actor/ActorModel';
 import ActorGallery from '../../Components/ActorGallery/ActorGallery';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 
 
 function ActorsPage() {
@@ -11,6 +13,7 @@ function ActorsPage() {
     const [sortBy, changeSort] = React.useState("fname");
     const [actors, setActors] = React.useState([]);
     const [filteredActors, setFilteredActors] = React.useState([]);
+    const history = useHistory();
     
 
     React.useState(() => {
@@ -40,13 +43,16 @@ function ActorsPage() {
 
     return (
         <div className="p-actors">
+            <Button onClick={() => history.goBack()}>Back</Button>
             <h1>Actor Gallery</h1>
-            <input type="text" value={filterInput} placeholder="Filter by first name or last name" onChange={(e) => filterActors(e)}/>
-            Sort By:
-            <select id="sortBy" value={sortBy} onChange={(e) => changeSort(e.target.value)}>
+            <div className="search-filter">
+              <input type="text" value={filterInput} placeholder="Filter by first name or last name" onChange={(e) => filterActors(e)}/>
+              Sort By:
+              <select id="sortBy" value={sortBy} onChange={(e) => changeSort(e.target.value)}>
                 <option value="fname">First Name</option>
                 <option value="lname">Last Name</option>
-            </select>
+              </select>
+            </div>
             <ActorGallery actorsArray={filterInput !== "" ? filteredActors : actors}/>
         </div>
     );

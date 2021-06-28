@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import './MoviesPage.css';
 
 function MoviesPage() {
     const [movies, setMovies] = React.useState([]);
+    const history = useHistory();
 
     const apiKey = "ca0fa9f32ca8d7ab8daf415172adb490";
     const movieImgPrefix = "https://image.tmdb.org/t/p/w200";
@@ -15,7 +17,7 @@ function MoviesPage() {
 
     return (
         <div className="p-movies">
-            <Button onClick={router.history}>Back</Button>
+            <Button onClick={() => history.goBack()}>Back</Button>
             <h1>Movies Page</h1>
             {
                 movies.map(movie => 
